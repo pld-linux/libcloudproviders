@@ -5,20 +5,22 @@
 Summary:	Cloud providers DBus API library
 Summary(pl.UTF-8):	Biblioteka API DBus usług dostawców chmurowych
 Name:		libcloudproviders
-Version:	0.2.5
+Version:	0.3.0
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 #Source0Download: https://gitlab.gnome.org/World/libcloudproviders/tags
-Source0:	https://gitlab.gnome.org/World/libcloudproviders/uploads/32bb0a808c397d55b6d72c61540c0171/%{name}-%{version}.tar.xz
-# Source0-md5:	5c6f15fca82c9deb27a16ea956afdc15
+Source0:	https://gitlab.gnome.org/World/libcloudproviders/uploads/e97a550ebbf85e753c4df5692a86b39d/%{name}-%{version}.tar.xz
+# Source0-md5:	1cdfa964aea8af9b062e84aafe065352
 URL:		https://gitlab.gnome.org/World/libcloudproviders
 BuildRequires:	gcc >= 5:3.2
 BuildRequires:	glib2-devel >= 1:2.51.2
+BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk-doc
-BuildRequires:	meson >= 0.40.0
+BuildRequires:	meson >= 0.42.0
 BuildRequires:	ninja
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	vala
 BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,6 +48,19 @@ Header files for cloudproviders library.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki cloudproviders.
+
+%package -n vala-libcloudproviders
+Summary:	Vala API for cloudproviders library
+Summary(pl.UTF-8):	API języka Vala do biblioteki cloudproviders
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala
+
+%description -n vala-libcloudproviders
+Vala API for cloudproviders library.
+
+%description -n vala-libcloudproviders -l pl.UTF-8
+API języka Vala do biblioteki cloudproviders.
 
 %package apidocs
 Summary:	API documentation for cloudproviders library
@@ -86,12 +101,19 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGELOG README.md
 %attr(755,root,root) %{_libdir}/libcloudproviders.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcloudproviders.so.0
+%{_libdir}/girepository-1.0/CloudProviders-0.3.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libcloudproviders.so
 %{_includedir}/cloudproviders
+%{_datadir}/gir-1.0/CloudProviders-0.3.0.gir
 %{_pkgconfigdir}/cloudproviders.pc
+
+%files -n vala-libcloudproviders
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/cloudproviders.deps
+%{_datadir}/vala/vapi/cloudproviders.vapi
 
 %if %{with apidocs}
 %files apidocs

@@ -5,20 +5,19 @@
 Summary:	Cloud providers DBus API library
 Summary(pl.UTF-8):	Biblioteka API DBus usług dostawców chmurowych
 Name:		libcloudproviders
-Version:	0.3.0
+Version:	0.3.1
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-#Source0Download: https://gitlab.gnome.org/World/libcloudproviders/tags
-Source0:	https://gitlab.gnome.org/World/libcloudproviders/uploads/e97a550ebbf85e753c4df5692a86b39d/%{name}-%{version}.tar.xz
-# Source0-md5:	1cdfa964aea8af9b062e84aafe065352
+Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
+# Source0-md5:	f4c782e044760830515ab9b886791a95
 URL:		https://gitlab.gnome.org/World/libcloudproviders
 BuildRequires:	gcc >= 5:3.2
 BuildRequires:	glib2-devel >= 1:2.51.2
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk-doc
 BuildRequires:	meson >= 0.42.0
-BuildRequires:	ninja
+BuildRequires:	ninja >= 1.5
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 BuildRequires:	xz
@@ -66,7 +65,7 @@ API języka Vala do biblioteki cloudproviders.
 Summary:	API documentation for cloudproviders library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki cloudproviders
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -101,13 +100,13 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGELOG README.md
 %attr(755,root,root) %{_libdir}/libcloudproviders.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcloudproviders.so.0
-%{_libdir}/girepository-1.0/CloudProviders-0.3.0.typelib
+%{_libdir}/girepository-1.0/CloudProviders-0.3.typelib
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libcloudproviders.so
 %{_includedir}/cloudproviders
-%{_datadir}/gir-1.0/CloudProviders-0.3.0.gir
+%{_datadir}/gir-1.0/CloudProviders-0.3.gir
 %{_pkgconfigdir}/cloudproviders.pc
 
 %files -n vala-libcloudproviders

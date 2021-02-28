@@ -65,9 +65,7 @@ API języka Vala do biblioteki cloudproviders.
 Summary:	API documentation for cloudproviders library
 Summary(pl.UTF-8):	Dokumentacja API biblioteki cloudproviders
 Group:		Documentation
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 API documentation for cloudproviders library.

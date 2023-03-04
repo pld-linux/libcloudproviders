@@ -9,7 +9,7 @@ Version:	0.3.1
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	http://ftp.acc.umu.se/pub/GNOME/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
+Source0:	https://download.gnome.org/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
 # Source0-md5:	f4c782e044760830515ab9b886791a95
 URL:		https://gitlab.gnome.org/World/libcloudproviders
 BuildRequires:	gcc >= 5:3.2

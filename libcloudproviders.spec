@@ -1,22 +1,22 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# do not build and package API docs
+%bcond_without	apidocs		# API documentation
 #
 Summary:	Cloud providers DBus API library
 Summary(pl.UTF-8):	Biblioteka API DBus usług dostawców chmurowych
 Name:		libcloudproviders
-Version:	0.3.1
+Version:	0.3.2
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	f4c782e044760830515ab9b886791a95
+# Source0-md5:	bc97871ac437774b1b0cbb192d907f89
 URL:		https://gitlab.gnome.org/World/libcloudproviders
 BuildRequires:	gcc >= 5:3.2
 BuildRequires:	glib2-devel >= 1:2.51.2
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk-doc
-BuildRequires:	meson >= 0.42.0
+BuildRequires:	meson >= 0.54.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala

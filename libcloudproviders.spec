@@ -5,12 +5,12 @@
 Summary:	Cloud providers DBus API library
 Summary(pl.UTF-8):	Biblioteka API DBus usług dostawców chmurowych
 Name:		libcloudproviders
-Version:	0.3.2
+Version:	0.3.4
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	bc97871ac437774b1b0cbb192d907f89
+# Source0-md5:	6693c18d7d9a2f2e7bb5b1fe41611acc
 URL:		https://gitlab.gnome.org/World/libcloudproviders
 BuildRequires:	gcc >= 5:3.2
 BuildRequires:	glib2-devel >= 1:2.51.2

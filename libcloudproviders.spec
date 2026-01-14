@@ -5,22 +5,24 @@
 Summary:	Cloud providers DBus API library
 Summary(pl.UTF-8):	Biblioteka API DBus usług dostawców chmurowych
 Name:		libcloudproviders
-Version:	0.3.6
+Version:	0.4.0
 Release:	1
 License:	LGPL v3+
 Group:		Libraries
-Source0:	https://download.gnome.org/sources/libcloudproviders/0.3/%{name}-%{version}.tar.xz
-# Source0-md5:	f0f994bdc36fdfe9b31e3655b8071599
+Source0:	https://download.gnome.org/sources/libcloudproviders/0.4/%{name}-%{version}.tar.xz
+# Source0-md5:	62cfcd02be9539502e6f04a6bd81c068
 URL:		https://gitlab.gnome.org/World/libcloudproviders
 BuildRequires:	gcc >= 5:3.2
-BuildRequires:	glib2-devel >= 1:2.51.2
+BuildRequires:	gi-docgen >= 2021.1
+BuildRequires:	glib2-devel >= 1:2.64
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk-doc
-BuildRequires:	meson >= 0.54.0
+BuildRequires:	meson >= 1.9.0
 BuildRequires:	ninja >= 1.5
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 BuildRequires:	xz
+Requires:	glib2 >= 1:2.64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,7 +42,7 @@ Summary:	Header files for cloudproviders library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki cloudproviders
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.51.2
+Requires:	glib2-devel >= 1:2.64
 
 %description devel
 Header files for cloudproviders library.
@@ -77,15 +79,18 @@ Dokumentacja API biblioteki cloudproviders.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	%{?with_apidocs:-Denable-gtk-doc=true}
 
-%meson_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%meson_install -C build
+%meson_install
+
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/libcloudproviders-0.3 $RPM_BUILD_ROOT%{_gidocdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -96,13 +101,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG README.md
-%attr(755,root,root) %{_libdir}/libcloudproviders.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcloudproviders.so.0
+%{_libdir}/libcloudproviders.so.*.*.*
+%ghost %{_libdir}/libcloudproviders.so.0
 %{_libdir}/girepository-1.0/CloudProviders-0.3.typelib
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libcloudproviders.so
+%{_libdir}/libcloudproviders.so
 %{_includedir}/cloudproviders
 %{_datadir}/gir-1.0/CloudProviders-0.3.gir
 %{_pkgconfigdir}/cloudproviders.pc
@@ -115,5 +120,5 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/libcloudproviders
+%{_gidocdir}/libcloudproviders-0.3
 %endif

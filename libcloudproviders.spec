@@ -89,8 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %meson_install
 
-install -d $RPM_BUILD_ROOT%{_gidocdir}
 %if %{with apidocs}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
 %{__mv} $RPM_BUILD_ROOT%{_docdir}/libcloudproviders-0.3 $RPM_BUILD_ROOT%{_gidocdir}
 %endif
 
